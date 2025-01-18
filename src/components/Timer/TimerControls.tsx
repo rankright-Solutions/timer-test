@@ -20,31 +20,31 @@ const TimerControls = ({
   showLap 
 }: TimerControlsProps) => {
   return (
-    <div className="flex gap-4 mt-8">
+    <div className="flex flex-wrap justify-center gap-4 mt-8">
       <Button
         variant="outline"
         size="lg"
         onClick={isRunning ? onPause : onStart}
-        className="w-24 h-24 rounded-full"
+        className="w-16 h-16 sm:w-24 sm:h-24 rounded-full"
       >
-        {isRunning ? <Pause className="h-8 w-8" /> : <Play className="h-8 w-8" />}
+        {isRunning ? <Pause className="h-6 w-6 sm:h-8 sm:w-8" /> : <Play className="h-6 w-6 sm:h-8 sm:w-8" />}
       </Button>
       <Button
         variant="outline"
         size="lg"
         onClick={onReset}
-        className="w-24 h-24 rounded-full"
+        className="w-16 h-16 sm:w-24 sm:h-24 rounded-full"
       >
-        <RotateCcw className="h-8 w-8" />
+        <RotateCcw className="h-6 w-6 sm:h-8 sm:w-8" />
       </Button>
       {showLap && onLap && (
         <Button
           variant="outline"
           size="lg"
           onClick={onLap}
-          className="w-24 h-24 rounded-full"
+          className="w-16 h-16 sm:w-24 sm:h-24 rounded-full"
         >
-          <Flag className="h-8 w-8" />
+          <Flag className="h-6 w-6 sm:h-8 sm:w-8" />
         </Button>
       )}
     </div>

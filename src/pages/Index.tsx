@@ -103,11 +103,11 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
       <Header />
-      <main className="container py-8">
+      <main className="container px-4 sm:px-6 py-8">
         <div className="max-w-4xl mx-auto text-center">
           <Button
             onClick={toggleMode}
-            className="mb-8"
+            className="mb-8 w-full sm:w-auto"
             variant="outline"
           >
             Switch to {isStopwatch ? 'Timer' : 'Stopwatch'}
@@ -119,7 +119,7 @@ const Index = () => {
                 minutes={Math.floor(stopwatchTime / 60000)}
                 seconds={Math.floor((stopwatchTime % 60000) / 1000)}
                 milliseconds={Math.floor((stopwatchTime % 1000) / 10)}
-                className="mb-8"
+                className="mb-8 text-4xl sm:text-6xl md:text-8xl"
               />
               <TimerControls
                 isRunning={isRunning}
@@ -130,9 +130,9 @@ const Index = () => {
                 showLap
               />
               {laps.length > 0 && (
-                <div className="mt-8 space-y-2">
+                <div className="mt-8 space-y-2 overflow-auto max-h-48 sm:max-h-96">
                   {laps.map((lap, index) => (
-                    <div key={index} className="text-lg">
+                    <div key={index} className="text-base sm:text-lg">
                       Lap {index + 1}: {Math.floor(lap / 60000)}:
                       {String(Math.floor((lap % 60000) / 1000)).padStart(2, '0')}.
                       {String(Math.floor((lap % 1000) / 10)).padStart(2, '0')}
@@ -143,13 +143,13 @@ const Index = () => {
             </>
           ) : (
             <>
-              <div className="grid grid-cols-3 gap-4 mb-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4 mb-8">
                 {TIMER_PRESETS.map((preset) => (
                   <Button
                     key={preset.minutes}
                     onClick={() => setSelectedPreset(preset)}
                     variant={selectedPreset.minutes === preset.minutes ? "default" : "outline"}
-                    className="text-lg"
+                    className="text-sm sm:text-base"
                   >
                     {preset.minutes} min
                   </Button>
@@ -158,7 +158,7 @@ const Index = () => {
               <TimerDisplay
                 minutes={Math.floor(timeLeft / 60)}
                 seconds={timeLeft % 60}
-                className="mb-8"
+                className="mb-8 text-4xl sm:text-6xl md:text-8xl"
               />
               <TimerControls
                 isRunning={isRunning}
@@ -166,7 +166,9 @@ const Index = () => {
                 onPause={pauseTimer}
                 onReset={resetTimer}
               />
-              <VideoSection videoId={selectedPreset.videoId} />
+              <div className="mt-8 w-full">
+                <VideoSection videoId={selectedPreset.videoId} />
+              </div>
             </>
           )}
         </div>

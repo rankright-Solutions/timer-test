@@ -10,10 +10,10 @@ interface TimerDisplayProps {
 
 const TimerDisplay = ({ minutes, seconds, milliseconds, className }: TimerDisplayProps) => {
   return (
-    <div className={cn("text-8xl font-bold text-timer-display tracking-wider", className)}>
+    <div className={cn("font-bold text-timer-display tracking-wider", className)}>
       {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
       {milliseconds !== undefined && 
-        <span className="text-4xl ml-2">.{String(milliseconds).padStart(3, '0')}</span>
+        <span className="text-2xl sm:text-4xl ml-1">.{String(milliseconds).padStart(3, '0')}</span>
       }
     </div>
   );
